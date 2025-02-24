@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+namespace muqsit\libcamera;
+
+use pocketmine\math\Vector3;
+use pocketmine\network\mcpe\protocol\CameraInstructionPacket;
+use pocketmine\network\mcpe\protocol\types\camera\CameraFadeInstruction;
+use pocketmine\network\mcpe\protocol\types\camera\CameraFadeInstructionColor;
+use pocketmine\network\mcpe\protocol\types\camera\CameraFadeInstructionTime;
+use pocketmine\network\mcpe\protocol\types\camera\CameraPreset;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstruction;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEase;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
+use pocketmine\player\Player;
+use function array_push;
+use function spl_object_id;
+
+final class CameraInstruction{
+
+	public static function clear() : self{
+		return new self([[null, true, null]]);
+	}
+
+	public static function fade(?CameraFadeInstructionColor $color, ?CameraFadeInstructionTime $time) : self{
+		$instruction = new CameraFadeInstruction($time, $color);
+		return new self([[null, null, $instruction]]);
+	}
+
+	public static function set(
+		CameraPreset $preset,
+		?CameraSetInstructionEase $ease = null,
+		?Vector3 $camera_pos = null,
+		?CameraSetInstructionRotation $rot = null,
+		?Vector3 $facing_pos = null
+	) : self{
+		$preset_id = libcamera::getPresetRegistry()->network_ids[spl_object_id($preset)];
+		$instruction = new CameraSetInstruction($preset_id, $ease, $camera_pos, $rot, $facing_pos, null, null, null);
+		return new self([[$instruction, null, null]]);
+	}
+
+	public static function multi(self ...$instances) : self{
+		$instructions = [];
+		foreach($instances as $instance){
+			array_push($instructions, ...$instance->instructions);
+		}
+		return new self($instructions);
+	}
+
+	/**
+	 * @param list<array{CameraSetInstruction|null, bool|null, CameraFadeInstruction|null}> $instructions
+	 */
+	private function __construct(
+		readonly private array $instructions
+	){}
+
+	public function send(Player $player) : void{
+		foreach($this->instructions as [$set, $clear, $fade]){
+			$player->getNetworkSession()->sendDataPacket(CameraInstructionPacket::create($set, $clear, $fade, null, null));
+		}
+	}
+}
