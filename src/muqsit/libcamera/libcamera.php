@@ -8,10 +8,14 @@ use BadMethodCallException;
 use InvalidArgumentException;
 use pocketmine\event\EventPriority;
 use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\event\server\DataPacketSendEvent;
+use pocketmine\math\Vector2;
 use pocketmine\network\mcpe\protocol\CameraPresetsPacket;
 use pocketmine\network\mcpe\protocol\SetLocalPlayerAsInitializedPacket;
+use pocketmine\network\mcpe\protocol\StartGamePacket;
 use pocketmine\network\mcpe\protocol\types\camera\CameraPreset;
 use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
+use pocketmine\network\mcpe\protocol\types\Experiments;
 use pocketmine\plugin\Plugin;
 use pocketmine\Server;
 use function array_values;
@@ -39,6 +43,17 @@ final class libcamera{
 				$event->getOrigin()->sendDataPacket($packet);
 			}
 		}, EventPriority::MONITOR, $plugin);
+		Server::getInstance()->getPluginManager()->registerEvent(DataPacketSendEvent::class, function(DataPacketSendEvent $event) use ($packet) : void{
+			foreach($event->getPackets() as $packet){
+				if($packet instanceof StartGamePacket){
+					$experiments = $packet->levelSettings->experiments->getExperiments();
+					$experiments["focus_target_camera"] = true;
+					$experiments["third_person_cameras"] = true;
+					$experiments["cameras"] = true;
+					$packet->levelSettings->experiments = new Experiments($experiments, true);
+				}
+			}
+		}, EventPriority::HIGHEST, $plugin);
 		self::$preset_registry = $preset_registry;
 		self::$registered = true;
 	}
