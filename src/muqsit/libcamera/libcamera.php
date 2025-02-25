@@ -35,7 +35,8 @@ final class libcamera{
 			"free" => new CameraPreset("minecraft:free", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_CAMERA, false, false, null),
 			"first_person" => new CameraPreset("minecraft:first_person", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
 			"third_person" => new CameraPreset("minecraft:third_person", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
-			"third_person_front" => new CameraPreset("minecraft:third_person_front", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null)
+			"third_person_front" => new CameraPreset("minecraft:third_person_front", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
+			"target" => new CameraPreset("minecraft:target", "minecraft:free", null, null, null, null, null, 0.0, true, new Vector2(0.0, 360.0), new Vector2(0.0, 180.0), true, 50.0, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_CAMERA, false, false, null)
 		]);
 		$packet = CameraPresetsPacket::create(array_values($preset_registry->registered));
 		Server::getInstance()->getPluginManager()->registerEvent(DataPacketReceiveEvent::class, function(DataPacketReceiveEvent $event) use($packet) : void{
