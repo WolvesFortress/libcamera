@@ -50,6 +50,12 @@ final class CameraInstruction{
 		return new self([[null, null, null, null]]);
 	}
 
+	/**
+	 * Combines multiple {@see CameraInstruction} instances into one.
+	 * This is useful for sending multiple instructions in a single packet.
+	 *
+	 * @param CameraInstruction ...$instances
+	 */
 	public static function multi(self ...$instances) : self{
 		$instructions = [];
 		foreach($instances as $instance){
