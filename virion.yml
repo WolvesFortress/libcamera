@@ -2,4 +2,4 @@ name: libcamera
 antigen: muqsit\libcamera
 api: 5.0.0
 version: 0.1.0
-author: Muqsit
+authors: [ Muqsit, inxomnyaa ]
