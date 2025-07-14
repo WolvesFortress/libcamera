@@ -1,3 +1,5 @@
+<img src="https://github.com/WolvesFortress/libcamera/raw/master/libcamera.png" width="100" align="left" style="margin-right: 1em;position: relative;z-index: 1000;" alt="libcamera icon"/>
+
 # libcamera
 
 A small library for handling camera instructions added in Minecraft Bedrock Edition 1.19.30.
