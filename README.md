@@ -282,7 +282,7 @@ use pocketmine\entity\Zombie;
 use muqsit\libcamera\CameraPresetRegistry;
 ```
 
-## ease LINEAR
+## linear-demo
 
 Want to move the camera freely? Use ease!   
 
@@ -336,6 +336,43 @@ https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
 		}
 	}
 ```
+
+| Easing Name    | Behavior Description                                           | See Demo                    |
+|----------------|----------------------------------------------------------------|-----------------------------|
+| in_back        | Moves slightly backward before heading to the endpoint         | [see](#in_back-demo)        |
+| out_back       | Slightly overshoots the endpoint and returns                   | [see](#out_back-demo)       |
+| in_out_back    | Combines both in and out behaviors                             | [see](#in_out_back-demo)    |
+| in_bounce      | Bounces 3 times before heading to the endpoint on the 4th time | [see](#in_bounce-demo)      |
+| out_bounce     | Bounces 3 times and stops at the endpoint on the 4th time      | [see](#out_bounce-demo)     |
+| in_out_bounce  | Combines both in and out bounce behaviors                      | [see](#in_out_bounce-demo)  |
+| in_circ        | Accelerates toward the endpoint                                | [see](#in_circ-demo)        |
+| out_circ       | Decelerates toward the endpoint                                | [see](#out_circ-demo)       |
+| in_out_circ    | Combines both in and out circ behaviors                        | [see](#in_out_circ-demo)    |
+| in_cubic       | Accelerates toward the endpoint                                | [see](#in_cubic-demo)       |
+| out_cubic      | Decelerates toward the endpoint                                | [see](#out_cubic-demo)      |
+| in_out_cubic   | Combines both in and out cubic behaviors                       | [see](#in_out_cubic-demo)   |
+| in_elastic     | Oscillates 3 times and heads to the endpoint on the 4th time   | [see](#in_elastic-demo)     |
+| out_elastic    | Oscillates 3 times and stops at the endpoint on the 4th time   | [see](#out_elastic-demo)    |
+| in_out_elastic | Combines both in and out elastic behaviors                     | [see](#in_out_elastic-demo) |
+| in_expo        | Accelerates toward the endpoint                                | [see](#in_expo-demo)        |
+| out_expo       | Decelerates toward the endpoint                                | [see](#out_expo-demo)       |
+| in_out_expo    | Combines both in and out expo behaviors                        | [see](#in_out_expo-demo)    |
+| in_quad        | Accelerates toward the endpoint                                | [see](#in_quad-demo)        |
+| out_quad       | Decelerates toward the endpoint                                | [see](#out_quad-demo)       |
+| in_out_quad    | Combines both in and out quad behaviors                        | [see](#in_out_quad-demo)    |
+| in_quart       | Accelerates toward the endpoint                                | [see](#in_quart-demo)       |
+| out_quart      | Decelerates toward the endpoint                                | [see](#out_quart-demo)      |
+| in_out_quart   | Combines both in and out quart behaviors                       | [see](#in_out_quart-demo)   |
+| in_quint       | Accelerates toward the endpoint                                | [see](#in_quint-demo)       |
+| out_quint      | Decelerates toward the endpoint                                | [see](#out_quint-demo)      |
+| in_out_quint   | Combines both in and out quint behaviors                       | [see](#in_out_quint-demo)   |
+| in_sine        | Accelerates toward the endpoint                                | [see](#in_sine-demo)        |
+| out_sine       | Decelerates toward the endpoint                                | [see](#out_sine-demo)       |
+| in_out_sine    | Combines both in and out sine behaviors                        | [see](#in_out_sine-demo)    |
+| linear         | Moves from start to end at constant speed                      | [see](#linear-demo)         |
+| spring         | Slightly oscillates around the endpoint                        | [see](#spring-demo)         |
+
+
 
 ## facing_pos
 
