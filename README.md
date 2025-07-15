@@ -337,7 +337,7 @@ https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
 	}
 ```
  
-# Rases
+# Eases
 
 Usage Example in Minecraft:  
 When using minecraft:free with an ease parameter, you can move the free camera smoothly to a specified endpoint over a given duration.  
