@@ -551,7 +551,7 @@ https://github.com/user-attachments/assets/67924c3f-f7c8-4216-b11f-943bf5149de9
 ## out_back-demo
 
 
-### WARNING: This will crash the client as of 1.21.93
+### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
 
@@ -584,7 +584,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 ## in_out_back-demo
 
-### WARNING: This will crash the client as of 1.21.93
+### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
 <summary>see Code</summary>
@@ -690,7 +690,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_out_bounce-demo)
+https://github.com/user-attachments/assets/a4a8f132-d31f-4187-9769-b5ea544a5d56
 
 </details>
 
@@ -718,7 +718,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_circ-demo)
+https://github.com/user-attachments/assets/8edb854e-ad07-47d6-ab08-792954209ffe
 
 </details>
 
