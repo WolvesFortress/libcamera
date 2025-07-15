@@ -344,7 +344,6 @@ The easing functions listed above determine how the camera moves.
 Reference:  
 https://bacchigames.club/mc/howtocamera.html
 
-
 | Easing Name    | Behavior Description                                           | See Demo                    | IsCrash |
 |----------------|----------------------------------------------------------------|-----------------------------|---------|
 | in_back        | Moves slightly backward before heading to the endpoint         | [see](#in_back-demo)        | ❌       |
@@ -360,8 +359,8 @@ https://bacchigames.club/mc/howtocamera.html
 | out_cubic      | Decelerates toward the endpoint                                | [see](#out_cubic-demo)      | ❌       |
 | in_out_cubic   | Combines both in and out cubic behaviors                       | [see](#in_out_cubic-demo)   | ❌       |
 | in_elastic     | Oscillates 3 times and heads to the endpoint on the 4th time   | [see](#in_elastic-demo)     | ❌       |
-| out_elastic    | Oscillates 3 times and stops at the endpoint on the 4th time   | [see](#out_elastic-demo)    | ❌       |
-| in_out_elastic | Combines both in and out elastic behaviors                     | [see](#in_out_elastic-demo) | ❌       |
+| out_elastic    | Oscillates 3 times and stops at the endpoint on the 4th time   | [see](#out_elastic-demo)    | ✅       |
+| in_out_elastic | Combines both in and out elastic behaviors                     | [see](#in_out_elastic-demo) | ✅       |
 | in_expo        | Accelerates toward the endpoint                                | [see](#in_expo-demo)        | ❌       |
 | out_expo       | Decelerates toward the endpoint                                | [see](#out_expo-demo)       | ❌       |
 | in_out_expo    | Combines both in and out expo behaviors                        | [see](#in_out_expo-demo)    | ❌       |
@@ -1202,6 +1201,168 @@ https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 ```
 
 </details>
+
+
+
+## in_quad-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_QUAD);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/ccecf930-6c4e-46c8-b009-c88578d0668e
+
+</details>
+
+---
+
+## out_quad-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_QUAD);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/21d17561-ebb5-44fa-a95e-c4382504f834
+
+</details>
+
+---
+
+## in_out_quad-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_QUAD);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/76d050d3-6c5e-47f3-9ca8-5386e3e17f00
+
+</details>
+
+---
+
+## in_out_elastic-demo
+
+### WARNING: ⚠️ Crashes client on 1.21.93
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_ELASTIC);
+}
+```
+
+---
+
+## out_elastic-demo
+
+### WARNING: ⚠️ Crashes client on 1.21.93
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_ELASTIC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
+---
+
+## in_elastic-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_ELASTIC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/2290dead-b798-41f5-8cc7-b6d3f28a3760
+
+</details>
+
 
 
 ## Roadmap
