@@ -344,40 +344,41 @@ The easing functions listed above determine how the camera moves.
 Reference:  
 https://bacchigames.club/mc/howtocamera.html
 
-| Easing Name    | Behavior Description                                           | See Demo                    |
-|----------------|----------------------------------------------------------------|-----------------------------|
-| in_back        | Moves slightly backward before heading to the endpoint         | [see](#in_back-demo)        |
-| out_back       | Slightly overshoots the endpoint and returns                   | [see](#out_back-demo)       |
-| in_out_back    | Combines both in and out behaviors                             | [see](#in_out_back-demo)    |
-| in_bounce      | Bounces 3 times before heading to the endpoint on the 4th time | [see](#in_bounce-demo)      |
-| out_bounce     | Bounces 3 times and stops at the endpoint on the 4th time      | [see](#out_bounce-demo)     |
-| in_out_bounce  | Combines both in and out bounce behaviors                      | [see](#in_out_bounce-demo)  |
-| in_circ        | Accelerates toward the endpoint                                | [see](#in_circ-demo)        |
-| out_circ       | Decelerates toward the endpoint                                | [see](#out_circ-demo)       |
-| in_out_circ    | Combines both in and out circ behaviors                        | [see](#in_out_circ-demo)    |
-| in_cubic       | Accelerates toward the endpoint                                | [see](#in_cubic-demo)       |
-| out_cubic      | Decelerates toward the endpoint                                | [see](#out_cubic-demo)      |
-| in_out_cubic   | Combines both in and out cubic behaviors                       | [see](#in_out_cubic-demo)   |
-| in_elastic     | Oscillates 3 times and heads to the endpoint on the 4th time   | [see](#in_elastic-demo)     |
-| out_elastic    | Oscillates 3 times and stops at the endpoint on the 4th time   | [see](#out_elastic-demo)    |
-| in_out_elastic | Combines both in and out elastic behaviors                     | [see](#in_out_elastic-demo) |
-| in_expo        | Accelerates toward the endpoint                                | [see](#in_expo-demo)        |
-| out_expo       | Decelerates toward the endpoint                                | [see](#out_expo-demo)       |
-| in_out_expo    | Combines both in and out expo behaviors                        | [see](#in_out_expo-demo)    |
-| in_quad        | Accelerates toward the endpoint                                | [see](#in_quad-demo)        |
-| out_quad       | Decelerates toward the endpoint                                | [see](#out_quad-demo)       |
-| in_out_quad    | Combines both in and out quad behaviors                        | [see](#in_out_quad-demo)    |
-| in_quart       | Accelerates toward the endpoint                                | [see](#in_quart-demo)       |
-| out_quart      | Decelerates toward the endpoint                                | [see](#out_quart-demo)      |
-| in_out_quart   | Combines both in and out quart behaviors                       | [see](#in_out_quart-demo)   |
-| in_quint       | Accelerates toward the endpoint                                | [see](#in_quint-demo)       |
-| out_quint      | Decelerates toward the endpoint                                | [see](#out_quint-demo)      |
-| in_out_quint   | Combines both in and out quint behaviors                       | [see](#in_out_quint-demo)   |
-| in_sine        | Accelerates toward the endpoint                                | [see](#in_sine-demo)        |
-| out_sine       | Decelerates toward the endpoint                                | [see](#out_sine-demo)       |
-| in_out_sine    | Combines both in and out sine behaviors                        | [see](#in_out_sine-demo)    |
-| linear         | Moves from start to end at constant speed                      | [see](#linear-demo)         |
-| spring         | Slightly oscillates around the endpoint                        | [see](#spring-demo)         |
+
+| Easing Name    | Behavior Description                                           | See Demo                    | IsCrash |
+|----------------|----------------------------------------------------------------|-----------------------------|---------|
+| in_back        | Moves slightly backward before heading to the endpoint         | [see](#in_back-demo)        | ❌       |
+| out_back       | Slightly overshoots the endpoint and returns                   | [see](#out_back-demo)       | ✅       |
+| in_out_back    | Combines both in and out behaviors                             | [see](#in_out_back-demo)    | ✅       |
+| in_bounce      | Bounces 3 times before heading to the endpoint on the 4th time | [see](#in_bounce-demo)      | ❌       |
+| out_bounce     | Bounces 3 times and stops at the endpoint on the 4th time      | [see](#out_bounce-demo)     | ❌       |
+| in_out_bounce  | Combines both in and out bounce behaviors                      | [see](#in_out_bounce-demo)  | ❌       |
+| in_circ        | Accelerates toward the endpoint                                | [see](#in_circ-demo)        | ❌       |
+| out_circ       | Decelerates toward the endpoint                                | [see](#out_circ-demo)       | ❌       |
+| in_out_circ    | Combines both in and out circ behaviors                        | [see](#in_out_circ-demo)    | ❌       |
+| in_cubic       | Accelerates toward the endpoint                                | [see](#in_cubic-demo)       | ❌       |
+| out_cubic      | Decelerates toward the endpoint                                | [see](#out_cubic-demo)      | ❌       |
+| in_out_cubic   | Combines both in and out cubic behaviors                       | [see](#in_out_cubic-demo)   | ❌       |
+| in_elastic     | Oscillates 3 times and heads to the endpoint on the 4th time   | [see](#in_elastic-demo)     | ❌       |
+| out_elastic    | Oscillates 3 times and stops at the endpoint on the 4th time   | [see](#out_elastic-demo)    | ❌       |
+| in_out_elastic | Combines both in and out elastic behaviors                     | [see](#in_out_elastic-demo) | ❌       |
+| in_expo        | Accelerates toward the endpoint                                | [see](#in_expo-demo)        | ❌       |
+| out_expo       | Decelerates toward the endpoint                                | [see](#out_expo-demo)       | ❌       |
+| in_out_expo    | Combines both in and out expo behaviors                        | [see](#in_out_expo-demo)    | ❌       |
+| in_quad        | Accelerates toward the endpoint                                | [see](#in_quad-demo)        | ❌       |
+| out_quad       | Decelerates toward the endpoint                                | [see](#out_quad-demo)       | ❌       |
+| in_out_quad    | Combines both in and out quad behaviors                        | [see](#in_out_quad-demo)    | ❌       |
+| in_quart       | Accelerates toward the endpoint                                | [see](#in_quart-demo)       | ❌       |
+| out_quart      | Decelerates toward the endpoint                                | [see](#out_quart-demo)      | ❌       |
+| in_out_quart   | Combines both in and out quart behaviors                       | [see](#in_out_quart-demo)   | ❌       |
+| in_quint       | Accelerates toward the endpoint                                | [see](#in_quint-demo)       | ❌       |
+| out_quint      | Decelerates toward the endpoint                                | [see](#out_quint-demo)      | ❌       |
+| in_out_quint   | Combines both in and out quint behaviors                       | [see](#in_out_quint-demo)   | ❌       |
+| in_sine        | Accelerates toward the endpoint                                | [see](#in_sine-demo)        | ❌       |
+| out_sine       | Decelerates toward the endpoint                                | [see](#out_sine-demo)       | ❌       |
+| in_out_sine    | Combines both in and out sine behaviors                        | [see](#in_out_sine-demo)    | ❌       |
+| linear         | Moves from start to end at constant speed                      | [see](#linear-demo)         | ❌       |
+| spring         | Slightly oscillates around the endpoint                        | [see](#spring-demo)         | ❌       |
 
 
 
@@ -454,6 +455,497 @@ https://github.com/user-attachments/assets/1f5d73c2-073a-4777-8b13-8ee6c6badefb
 		}
 	}
 ```
+
+# demos
+
+For convenience, we will use this common code for the demo.  
+
+```php
+	public function onDemo(Entity $player, int $easeType) : void{
+		if($player instanceof Player&&$player->isOnline()){
+			//Find the most different zombie entities
+			$nearest = null;
+			$nearestDistance = PHP_INT_MAX;
+			foreach($player->getWorld()->getEntities() as $entity){
+				if($entity instanceof Zombie){
+					$distance = $player->getPosition()->distance($entity->getPosition());
+					if($nearestDistance >= $distance){
+						$nearest = $entity;
+						$nearestDistance = $distance;
+					}
+				}
+			}
+
+			if($nearest === null){
+				$player->sendMessage("No Zombie");
+				return;
+			}
+
+			$player->setInvisible(true);
+			$nearest->despawnFrom($player);
+
+			CameraInstruction::multi(
+				CameraInstruction::set(
+					preset: CameraPresetRegistry::FREE(),
+					ease: null,
+					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos:null,
+				),
+				CameraInstruction::set(
+					preset: CameraPresetRegistry::FREE(),
+					ease: new CameraSetInstructionEase(
+						$easeType,
+						(float) 10.0 // duration (sec)
+					),
+					camera_pos: $nearest->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos: null,
+				)
+			)->send($player);
+
+			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($nearest, $player){
+				CameraInstruction::clear()->send($player);
+				$player->setInvisible(false);
+				$nearest->despawnFrom($player);
+			}), 20 * 10);
+		}
+	}
+```
+
+
+## in_back-demo
+
+<details align="center">
+	<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_BACK);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/67924c3f-f7c8-4216-b11f-943bf5149de9
+
+</details>
+---
+
+
+## out_back-demo
+
+
+### WARNING: This will crash the client as of 1.21.93
+
+<details align="center">
+
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_BACK);
+}
+```
+
+</details>
+
+<br>
+
+
+<!--details align="center">
+
+<summary>See demo</summary>
+
+[see](#out_back-demo)
+
+</details-->
+
+---
+
+## in_out_back-demo
+
+### WARNING: This will crash the client as of 1.21.93
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_BACK);
+}
+```
+
+</details>
+
+<br>
+
+<!--details align="center">
+<summary>See demo</summary>
+
+[see](#in_out_back-demo)
+
+</details-->
+
+---
+
+## in_bounce-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_BOUNCE);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/4f55e402-e27f-4e20-897a-3fd199561498
+
+</details>
+
+---
+
+## out_bounce-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_BOUNCE);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/365555eb-6193-4121-ac71-b300b857edae
+
+</details>
+
+---
+
+## in_out_bounce-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_BOUNCE);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_out_bounce-demo)
+
+</details>
+
+---
+
+## in_circ-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_CIRC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_circ-demo)
+
+</details>
+
+---
+
+## out_circ-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_CIRC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#out_circ-demo)
+
+</details>
+
+---
+
+## in_out_circ-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_CIRC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_out_circ-demo)
+
+</details>
+
+---
+
+## in_cubic-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_CUBIC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_cubic-demo)
+
+</details>
+
+---
+
+## out_cubic-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_CUBIC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#out_cubic-demo)
+
+</details>
+
+---
+
+## in_out_cubic-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_CUBIC);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_out_cubic-demo)
+
+</details>
+
+---
+
+## in_quart-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_QUART);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_quart-demo)
+
+</details>
+
+---
+
+## out_quart-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::OUT_QUART);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#out_quart-demo)
+
+</details>
+
+---
+
+## in_out_quart-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_QUART);
+}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+[see](#in_out_quart-demo)
+
+</details>
+
 
 ## Roadmap
 
