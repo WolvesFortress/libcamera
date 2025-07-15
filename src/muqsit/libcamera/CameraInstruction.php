@@ -39,7 +39,6 @@ final class CameraInstruction{
 		if(!libcamera::isRegistered()){
 			throw new \RuntimeException("libcamera::register() must be called before using CameraInstruction::set()");
 		}
-		var_dump(libcamera::$network_ids, spl_object_id($preset));
 		$preset_id = libcamera::$network_ids[spl_object_id($preset)][1] ?? throw new \InvalidArgumentException("Unknown camera preset, see libcamera::registerPreset()");
 		$instruction = new CameraSetInstruction(
 			preset: $preset_id,
