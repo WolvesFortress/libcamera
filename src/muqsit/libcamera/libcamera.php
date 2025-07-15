@@ -23,143 +23,46 @@ use function array_values;
 final class libcamera{
 
 	private static bool $registered = false;
-	private static CameraPresetRegistry $preset_registry;
 
 	public static function isRegistered(): bool{
 		return self::$registered;
 	}
 
+	protected static int $idCounter = 0;
+	/** @var array<int, int> */
+	public static array $network_ids;
+	private static ?CameraPresetsPacket $packetCache = null;
+
+	public static function newId() : int{
+		return self::$idCounter++;
+	}
+
+	public static function registerPreset(CameraPreset $preset) : void{
+		self::$network_ids[spl_object_id($preset)] = [$preset, self::newId()];
+		self::$packetCache = null;
+	}
+
+	private static function updateCache() : void{
+		self::$packetCache ??= CameraPresetsPacket::create(array_values(array_column(self::$network_ids, 0)));
+	}
+
 	public static function register(Plugin $plugin) : void{
 		!self::$registered || throw new BadMethodCallException("Tried to registered an already existing libcamera instance");
-		$preset_registry = new CameraPresetRegistry([
-			"free" => new CameraPreset(
-				name: "minecraft:free",
-				parent: "",
-				xPosition: null,
-				yPosition: null,
-				zPosition: null,
-				pitch: null,
-				yaw: null,
-				rotationSpeed: null,
-				snapToTarget: null,
-				horizontalRotationLimit: null,
-				verticalRotationLimit: null,
-				continueTargeting: null,
-				blockListeningRadius: null,
-				viewOffset: null,
-				entityOffset: null,
-				radius: null,
-				yawLimitMin: null,
-				yawLimitMax: null,
-				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_CAMERA,
-				playerEffects: false,
-				aimAssist: null,
-				controlScheme: null
-			),
-			"first_person" => new CameraPreset(
-				name: "minecraft:first_person",
-				parent: "",
-				xPosition: null,
-				yPosition: null,
-				zPosition: null,
-				pitch: null,
-				yaw: null,
-				rotationSpeed: null,
-				snapToTarget: null,
-				horizontalRotationLimit: null,
-				verticalRotationLimit: null,
-				continueTargeting: null,
-				blockListeningRadius: null,
-				viewOffset: null,
-				entityOffset: null,
-				radius: null,
-				yawLimitMin: null,
-				yawLimitMax: null,
-				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
-				playerEffects: false,
-				aimAssist: null,
-				controlScheme: null
-			),
-			"third_person" => new CameraPreset(
-				name: "minecraft:third_person",
-				parent: "",
-				xPosition: null,
-				yPosition: null,
-				zPosition: null,
-				pitch: null,
-				yaw: null,
-				rotationSpeed: null,
-				snapToTarget: null,
-				horizontalRotationLimit: null,
-				verticalRotationLimit: null,
-				continueTargeting: null,
-				blockListeningRadius: null,
-				viewOffset: null,
-				entityOffset: null,
-				radius: null,
-				yawLimitMin: null,
-				yawLimitMax: null,
-				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
-				playerEffects: false,
-				aimAssist: null,
-				controlScheme: null
-			),
-			"third_person_front" => new CameraPreset(
-				name: "minecraft:third_person_front",
-				parent: "",
-				xPosition: null,
-				yPosition: null,
-				zPosition: null,
-				pitch: null,
-				yaw: null,
-				rotationSpeed: null,
-				snapToTarget: null,
-				horizontalRotationLimit: null,
-				verticalRotationLimit: null,
-				continueTargeting: null,
-				blockListeningRadius: null,
-				viewOffset: null,
-				entityOffset: null,
-				radius: null,
-				yawLimitMin: null,
-				yawLimitMax: null,
-				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
-				playerEffects: false,
-				aimAssist: null,
-				controlScheme: null
-			),
-			"target" => new CameraPreset(
-				name: "minecraft:target",
-				parent: "minecraft:free",
-				xPosition: null,
-				yPosition: null,
-				zPosition: null,
-				pitch: null,
-				yaw: null,
-				rotationSpeed: 0.0,
-				snapToTarget: true,
-				horizontalRotationLimit: new Vector2(0.0, 360.0),
-				verticalRotationLimit: new Vector2(0.0, 180.0),
-				continueTargeting: true,
-				blockListeningRadius: 50.0,
-				viewOffset: null,
-				entityOffset: null,
-				radius: null,
-				yawLimitMin: null,
-				yawLimitMax: null,
-				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_CAMERA,
-				playerEffects: false,
-				aimAssist: null,
-				controlScheme: null
-			)
-		]);
-		$packet = CameraPresetsPacket::create(array_values($preset_registry->registered));
-		Server::getInstance()->getPluginManager()->registerEvent(DataPacketReceiveEvent::class, function(DataPacketReceiveEvent $event) use($packet) : void{
+
+		self::registerPreset(CameraPresetRegistry::FREE());
+		self::registerPreset(CameraPresetRegistry::FIRST_PERSON());
+		self::registerPreset(CameraPresetRegistry::THIRD_PERSON());
+		self::registerPreset(CameraPresetRegistry::THIRD_PERSON_FRONT());
+		self::registerPreset(CameraPresetRegistry::TARGET());
+		self::updateCache();
+
+		Server::getInstance()->getPluginManager()->registerEvent(DataPacketReceiveEvent::class, function(DataPacketReceiveEvent $event) : void{
+			self::updateCache();
 			if($event->getPacket() instanceof SetLocalPlayerAsInitializedPacket){
-				$event->getOrigin()->sendDataPacket($packet);
+				$event->getOrigin()->sendDataPacket(self::$packetCache ?? throw new \LogicException("Packet cache is null"));
 			}
 		}, EventPriority::MONITOR, $plugin);
-		Server::getInstance()->getPluginManager()->registerEvent(DataPacketSendEvent::class, function(DataPacketSendEvent $event) use ($packet) : void{
+		Server::getInstance()->getPluginManager()->registerEvent(DataPacketSendEvent::class, function(DataPacketSendEvent $event) : void{
 			foreach($event->getPackets() as $packet){
 				if($packet instanceof StartGamePacket){
 					$experiments = $packet->levelSettings->experiments->getExperiments();
@@ -168,12 +71,7 @@ final class libcamera{
 				}
 			}
 		}, EventPriority::HIGHEST, $plugin);
-		self::$preset_registry = $preset_registry;
 		self::$registered = true;
-	}
-
-	public static function getPresetRegistry() : CameraPresetRegistry{
-		return self::$preset_registry;
 	}
 
 	public static function parseEaseType(string $type) : int{

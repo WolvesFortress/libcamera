@@ -66,6 +66,7 @@ use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
 use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
 use pocketmine\network\mcpe\protocol\types\camera\Vector3;
 use pocketmine\player\Player;
+use muqsit\libcamera\CameraPresetRegistry;
 
 // ...
 if($player instanceof Player && $player->isOnline()){
@@ -77,7 +78,7 @@ if($player instanceof Player && $player->isOnline()){
 	 * @phpstan-param Vector3|null $facing_pos
 	 */
 	CameraInstruction::set(
-		preset: libcamera::getPresetRegistry()->registered["target"],
+		preset: CameraPresetRegistry::TARGET(),
 		ease: new CameraSetInstructionEase(
 			CameraSetInstructionEaseType::IN_OUT_CUBIC,
 			(float) 5.0 // duration (sec)
@@ -150,7 +151,7 @@ use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEase;
 use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
 use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
 use pocketmine\math\Vector3;
-
+use muqsit\libcamera\CameraPresetRegistry;
 // ...
 
 	/** @var array<string, true> */
@@ -190,11 +191,8 @@ use pocketmine\math\Vector3;
 
 		//
 		CameraInstruction::set(
-			preset: libcamera::getPresetRegistry()->registered["target"],
-			ease: new CameraSetInstructionEase(
-				CameraSetInstructionEaseType::IN_OUT_CUBIC,
-				(float) 5.0 // duration (sec)
-			),
+			preset: CameraPresetRegistry::TARGET(),
+			ease: null,
 			camera_pos: $player->getPosition()->add(0, $player->getEyeHeight(), 0),
 			rot: new CameraSetInstructionRotation(
 				(float) $player->getLocation()->getPitch(), //pitch
@@ -242,6 +240,8 @@ if($player instanceof Player && $player->isOnline()){
 
 - Multi
 
+This doesn't work
+
 ```php
 use muqsit\libcamera\libcamera;
 use muqsit\libcamera\CameraInstruction;
@@ -279,6 +279,7 @@ use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
 use pocketmine\player\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\entity\Zombie;
+use muqsit\libcamera\CameraPresetRegistry;
 ```
 
 ## ease LINEAR
@@ -305,7 +306,7 @@ https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
 
 			CameraInstruction::multi(
 				CameraInstruction::set(
-					preset: libcamera::getPresetRegistry()->registered["free"],
+					preset: CameraPresetRegistry::FREE(),
 					ease: null,
 					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
 					rot: new CameraSetInstructionRotation(
@@ -315,7 +316,7 @@ https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
 					facing_pos: null
 				),
 				CameraInstruction::set(
-					preset: libcamera::getPresetRegistry()->registered["free"],
+					preset: CameraPresetRegistry::FREE(),
 					ease:  new CameraSetInstructionEase(
 						CameraSetInstructionEaseType::LINEAR,
 						(float) 7.0 // duration (sec)
@@ -379,7 +380,7 @@ https://github.com/user-attachments/assets/1f5d73c2-073a-4777-8b13-8ee6c6badefb
 
 			CameraInstruction::multi(
 				CameraInstruction::set(
-					preset: libcamera::getPresetRegistry()->registered["free"],
+					preset: CameraPresetRegistry::FREE(),
 					ease: null,
 					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
 					rot: new CameraSetInstructionRotation(
@@ -389,7 +390,7 @@ https://github.com/user-attachments/assets/1f5d73c2-073a-4777-8b13-8ee6c6badefb
 					facing_pos: $nearest->getLocation()->asVector3()->add(0, $nearest->getEyeHeight(), 0),
 				),
 				CameraInstruction::set(
-					preset: libcamera::getPresetRegistry()->registered["free"],
+					preset: CameraPresetRegistry::FREE(),
 					ease: new CameraSetInstructionEase(
 						CameraSetInstructionEaseType::LINEAR,
 						(float) 7.0 // duration (sec)
@@ -415,7 +416,7 @@ https://github.com/user-attachments/assets/1f5d73c2-073a-4777-8b13-8ee6c6badefb
 At the moment, there are a few improvements that can be/or are being worked on. Here is a list of some of those
 improvements:
 
-- [ ] Allow registering new camera presets
+- [x] Allow registering new camera presets
 
 ## Issues
 
