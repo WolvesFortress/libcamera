@@ -580,6 +580,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 ### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -604,6 +605,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 ## in_bounce-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -632,6 +634,7 @@ https://github.com/user-attachments/assets/4f55e402-e27f-4e20-897a-3fd199561498
 ## out_bounce-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -660,6 +663,7 @@ https://github.com/user-attachments/assets/365555eb-6193-4121-ac71-b300b857edae
 ## in_out_bounce-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -688,6 +692,7 @@ https://github.com/user-attachments/assets/a4a8f132-d31f-4187-9769-b5ea544a5d56
 ## in_circ-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -716,6 +721,7 @@ https://github.com/user-attachments/assets/8edb854e-ad07-47d6-ab08-792954209ffe
 ## out_circ-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -744,6 +750,7 @@ https://github.com/user-attachments/assets/73c3bae0-1026-49be-855f-fdf53120bb55
 ## in_out_circ-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -772,6 +779,7 @@ https://github.com/user-attachments/assets/76626fef-d97a-4ed7-aa8a-d54a069c073c
 ## in_cubic-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -800,6 +808,7 @@ https://github.com/user-attachments/assets/1ec8c85b-2a92-4cf2-9f3c-6b4aa8b150db
 ## out_cubic-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -828,6 +837,7 @@ https://github.com/user-attachments/assets/02d67db4-d6c8-4062-b1f1-9b81f0e99012
 ## in_out_cubic-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -856,6 +866,7 @@ https://github.com/user-attachments/assets/002867af-8f93-4ca7-b34b-5ab0a9a17855
 ## in_quart-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -886,6 +897,7 @@ https://github.com/user-attachments/assets/01342b32-bd33-4bd3-a0e2-a332914fcd3d
 ## out_quart-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -914,6 +926,7 @@ https://github.com/user-attachments/assets/77c0d077-da10-41c1-a010-3f4aa62a984e
 ## in_out_quart-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -941,6 +954,7 @@ https://github.com/user-attachments/assets/cc72e54d-38fd-4921-89ea-48cc5c5d1f44
 ## in_quint-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -969,6 +983,7 @@ https://github.com/user-attachments/assets/a50bb0d6-770f-4910-be82-05abda073c61
 ## out_quint-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -997,6 +1012,7 @@ https://github.com/user-attachments/assets/f921aaa7-e170-4624-964f-b54c9a58b3c2
 ## in_out_quint-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1025,6 +1041,7 @@ https://github.com/user-attachments/assets/db433b41-6912-49e2-af7c-7f556d5b38f4
 ## in_sine-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1053,6 +1070,7 @@ https://github.com/user-attachments/assets/758fcb54-db91-4d83-baa6-b62c724a7ae3
 ## out_sine-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1081,6 +1099,7 @@ https://github.com/user-attachments/assets/e686b103-274c-4d98-ba18-feccfa563d97
 ## in_out_sine-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1109,6 +1128,7 @@ https://github.com/user-attachments/assets/c32a1034-eec0-4d2c-8a20-33bd03060d88
 ## in_expo-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1137,6 +1157,7 @@ https://github.com/user-attachments/assets/5ae64606-c404-4136-a78b-bee052ba0300
 ## out_expo-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1165,6 +1186,7 @@ https://github.com/user-attachments/assets/97958704-f087-4894-9888-360e9cf9e758
 ## in_out_expo-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1195,6 +1217,7 @@ https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 ### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1214,6 +1237,7 @@ https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 ## in_quad-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1242,6 +1266,7 @@ https://github.com/user-attachments/assets/ccecf930-6c4e-46c8-b009-c88578d0668e
 ## out_quad-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1270,6 +1295,7 @@ https://github.com/user-attachments/assets/21d17561-ebb5-44fa-a95e-c4382504f834
 ## in_out_quad-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1300,6 +1326,7 @@ https://github.com/user-attachments/assets/76d050d3-6c5e-47f3-9ca8-5386e3e17f00
 ### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1312,6 +1339,8 @@ public function onUse(PlayerItemUseEvent $event) : void{
 }
 ```
 
+</details>
+
 ---
 
 ## out_elastic-demo
@@ -1319,6 +1348,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 ### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
@@ -1333,20 +1363,12 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
-
-<details align="center">
-<summary>See demo</summary>
-
-url
-
-</details>
-
 ---
 
 ## in_elastic-demo
 
 <details align="center">
+
 <summary>see Code</summary>
 
 ```php
