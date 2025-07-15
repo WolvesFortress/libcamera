@@ -49,6 +49,14 @@ To send instructions to the camera, use the following code:
 
 - Set
 
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/338e4b84-1ded-4424-9ffb-6e94298bc53c
+
+</details>
+
+
 ```php
 use muqsit\libcamera\libcamera;
 use muqsit\libcamera\CameraInstruction;
@@ -74,10 +82,10 @@ if($player instanceof Player && $player->isOnline()){
 			CameraSetInstructionEaseType::IN_OUT_CUBIC,
 			(float) 5.0 // duration (sec)
 		),
-		camera_pos: null,
+		camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
 		rot: new CameraSetInstructionRotation(
-			(float)20.0, //pitch
-			(float)180.0 //yaw
+			(float)$player->getLocation()->getPitch(), //pitch
+			(float)$player->getLocation()->getYaw() //yaw
 		),
 		facing_pos: null
 	)->send($player);
@@ -108,24 +116,88 @@ if($player instanceof Player && $player->isOnline()){
 
 - Target
 
+After setting the camera to free mode, you need to explicitly assign a target.  
+This allows the camera to visually track a specific entity.  
+Unlike SetActorLinkPacket, it does not follow the entity automatically.  
+
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/38cd6bf1-f666-4635-870b-2d51b12bfa3f
+
+</details>
+
 ```php
-use muqsit\libcamera\libcamera;
+use pocketmine\event\player\PlayerInteractEvent;
 use muqsit\libcamera\CameraInstruction;
-use pocketmine\network\mcpe\protocol\types\camera\CameraTargetInstruction;
+use pocketmine\entity\Zombie;
+use muqsit\libcamera\libcamera;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEase;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
 use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
 // ...
-if($player instanceof Player && $player->isOnline()){
-	/** 
-	 * @phpstan-param Vector3|null $targetCenterOffset
-	 * @phpstan-param int $actorUniqueId
-	 */
-	CameraInstruction::target(
-		targetCenterOffset: Vector3::zero(), // no offset
-		actorUniqueId: $player->getId() // for example target the player
-	)->send($player);
-}
+
+	/** @var array<string, true> */
+	private $set = [];
+
+	public function ina(PlayerInteractEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+
+        //Removes camera tracking. Note that target and free cameras are managed separately.
+		if(isset($this->set[$player->getName()])){
+			CameraInstruction::removeTarget()->send($player);
+			CameraInstruction::clear()->send($player);
+			unset($this->set[$player->getName()]);
+			return;
+		}
+
+        //Find the most different zombie entities
+		$nearest = null;
+		$nearestDistance = PHP_INT_MAX;
+		foreach($player->getWorld()->getEntities() as $entity){
+			if($entity instanceof Zombie){
+				$distance = $player->getPosition()->distance($entity->getPosition());
+				if($nearestDistance >= $distance){
+					$nearest = $entity;
+					$nearestDistance = $distance;
+				}
+			}
+		}
+
+		if($nearest === null){
+			$player->sendMessage("No Zombie");
+			return;
+		}
+
+        //
+		CameraInstruction::set(
+			preset: libcamera::getPresetRegistry()->registered["target"],
+			ease: new CameraSetInstructionEase(
+				CameraSetInstructionEaseType::IN_OUT_CUBIC,
+				(float) 5.0 // duration (sec)
+			),
+			camera_pos: $player->getPosition()->add(0, $player->getEyeHeight(), 0),
+			rot: new CameraSetInstructionRotation(
+				(float) $player->getLocation()->getPitch(), //pitch
+				(float) $player->getLocation()->getYaw() //yaw
+			),
+			facing_pos: null
+		)->send($player);
+
+        //To use CameraInstruction::target you first need to make it a free camera.
+		CameraInstruction::target(
+			targetCenterOffset: Vector3::zero(), // no offset
+			actorUniqueId: $nearest->getId() // for example target the player
+		)->send($player);
+
+        //Manages which packets have been sent
+		$this->set[$player->getName()] = true;
+	}
 ```
 
 - Remove Target

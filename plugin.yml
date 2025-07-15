@@ -1,0 +1,6 @@
+---
+name: libCamera
+version: 0.0.1
+main:  muqsit\libcamera\libcameramain
+api: 5.31.0
+...
