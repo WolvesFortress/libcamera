@@ -378,7 +378,7 @@ https://bacchigames.club/mc/howtocamera.html
 | out_sine       | Decelerates toward the endpoint                                | [see](#out_sine-demo)       | ❌       |
 | in_out_sine    | Combines both in and out sine behaviors                        | [see](#in_out_sine-demo)    | ❌       |
 | linear         | Moves from start to end at constant speed                      | [see](#linear-demo)         | ❌       |
-| spring         | Slightly oscillates around the endpoint                        | [see](#spring-demo)         | ❌       |
+| spring         | Slightly oscillates around the endpoint                        | [see](#spring-demo)         | ✅       |
 
 
 
@@ -1094,7 +1094,7 @@ https://github.com/user-attachments/assets/e686b103-274c-4d98-ba18-feccfa563d97
 <details align="center">
 <summary>See demo</summary>
 
-url
+https://github.com/user-attachments/assets/c32a1034-eec0-4d2c-8a20-33bd03060d88
 
 </details>
 
@@ -1113,7 +1113,6 @@ url
 		}
 		$this->onDemo($player, CameraSetInstructionEaseType::IN_EXPO);
 	}
-
 ```
 
 </details>
@@ -1123,7 +1122,7 @@ url
 <details align="center">
 <summary>See demo</summary>
 
-url
+https://github.com/user-attachments/assets/5ae64606-c404-4136-a78b-bee052ba0300
 
 </details>
 
@@ -1142,7 +1141,6 @@ url
 		}
 		$this->onDemo($player, CameraSetInstructionEaseType::OUT_EXPO);
 	}
-
 ```
 
 </details>
@@ -1152,7 +1150,7 @@ url
 <details align="center">
 <summary>See demo</summary>
 
-url
+https://github.com/user-attachments/assets/97958704-f087-4894-9888-360e9cf9e758
 
 </details>
 
@@ -1171,7 +1169,6 @@ url
 		}
 		$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_EXPO);
 	}
-
 ```
 
 </details>
@@ -1181,13 +1178,15 @@ url
 <details align="center">
 <summary>See demo</summary>
 
-url
+https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 
 </details>
 
 ---
 
 ## spring-demo
+
+### WARNING: ⚠️ Crashes client on 1.21.93
 
 <details align="center">
 <summary>see Code</summary>
@@ -1200,20 +1199,9 @@ url
 		}
 		$this->onDemo($player, CameraSetInstructionEaseType::SPRING);
 	}
-
 ```
 
 </details>
-
-<br>
-
-<details align="center">
-<summary>See demo</summary>
-
-url
-
-</details>
-
 
 
 ## Roadmap
