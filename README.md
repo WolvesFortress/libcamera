@@ -869,7 +869,9 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_quart-demo)
+https://github.com/user-attachments/assets/01342b32-bd33-4bd3-a0e2-a332914fcd3d
+
+
 
 </details>
 
@@ -928,6 +930,290 @@ public function onUse(PlayerItemUseEvent $event) : void{
 https://github.com/user-attachments/assets/cc72e54d-38fd-4921-89ea-48cc5c5d1f44
 
 </details>
+
+
+## in_quint-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_QUINT);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/a50bb0d6-770f-4910-be82-05abda073c61
+
+</details>
+
+---
+
+## out_quint-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::OUT_QUINT);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/f921aaa7-e170-4624-964f-b54c9a58b3c2
+
+</details>
+
+---
+
+## in_out_quint-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_QUINT);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/db433b41-6912-49e2-af7c-7f556d5b38f4
+
+</details>
+
+---
+
+## in_sine-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_SINE);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/758fcb54-db91-4d83-baa6-b62c724a7ae3
+
+</details>
+
+---
+
+## out_sine-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::OUT_SINE);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/e686b103-274c-4d98-ba18-feccfa563d97
+
+</details>
+
+---
+
+## in_out_sine-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_SINE);
+	}
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
+---
+
+## in_expo-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_EXPO);
+	}
+
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
+---
+
+## out_expo-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::OUT_EXPO);
+	}
+
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
+---
+
+## in_out_expo-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::IN_OUT_EXPO);
+	}
+
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
+---
+
+## spring-demo
+
+<details align="center">
+<summary>see Code</summary>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		$this->onDemo($player, CameraSetInstructionEaseType::SPRING);
+	}
+
+```
+
+</details>
+
+<br>
+
+<details align="center">
+<summary>See demo</summary>
+
+url
+
+</details>
+
 
 
 ## Roadmap
