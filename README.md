@@ -265,6 +265,151 @@ if($player instanceof Player && $player->isOnline()){
 }
 ```
 
+# camera technic
+
+- use
+
+```php
+use pocketmine\event\player\PlayerItemUseEvent;
+use muqsit\libcamera\CameraInstruction;
+use muqsit\libcamera\libcamera;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEase;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
+use pocketmine\player\Player;
+use pocketmine\scheduler\ClosureTask;
+use pocketmine\entity\Zombie;
+```
+
+## ease LINEAR
+
+Want to move the camera freely? Use ease!   
+
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
+
+</details>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		if($player instanceof Player&&$player->isOnline()){
+			//linear
+
+			$do = $player->getDirectionVector()->multiply(10);
+
+			CameraInstruction::multi(
+				CameraInstruction::set(
+					preset: libcamera::getPresetRegistry()->registered["free"],
+					ease: null,
+					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos: null
+				),
+				CameraInstruction::set(
+					preset: libcamera::getPresetRegistry()->registered["free"],
+					ease:  new CameraSetInstructionEase(
+						CameraSetInstructionEaseType::LINEAR,
+						(float) 7.0 // duration (sec)
+					),
+					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0)->addVector($do), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos: null
+				)
+			)->send($player);
+
+			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($player){
+				CameraInstruction::clear()->send($player);
+			}), 20 * 7);
+		}
+	}
+```
+
+## facing_pos
+
+Do you want to move while looking at a point? Use facing_pos!  
+
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/1f5d73c2-073a-4777-8b13-8ee6c6badefb
+
+</details>
+
+```php
+	public function onUse(PlayerItemUseEvent $event) : void{
+		$player = $event->getPlayer();
+		if(!$player->isSneaking()){
+			return;
+		}
+		if($player instanceof Player&&$player->isOnline()){
+			//linear
+
+			//Find the most different zombie entities
+			$nearest = null;
+			$nearestDistance = PHP_INT_MAX;
+			foreach($player->getWorld()->getEntities() as $entity){
+				if($entity instanceof Zombie){
+					$distance = $player->getPosition()->distance($entity->getPosition());
+					if($nearestDistance >= $distance){
+						$nearest = $entity;
+						$nearestDistance = $distance;
+					}
+				}
+			}
+
+			if($nearest === null){
+				$player->sendMessage("No Zombie");
+				return;
+			}
+
+
+			$do = $player->getDirectionVector()->multiply(10);
+
+			CameraInstruction::multi(
+				CameraInstruction::set(
+					preset: libcamera::getPresetRegistry()->registered["free"],
+					ease: null,
+					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos: $nearest->getLocation()->asVector3()->add(0, $nearest->getEyeHeight(), 0),
+				),
+				CameraInstruction::set(
+					preset: libcamera::getPresetRegistry()->registered["free"],
+					ease: new CameraSetInstructionEase(
+						CameraSetInstructionEaseType::LINEAR,
+						(float) 7.0 // duration (sec)
+					),
+					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0)->addVector($do), //Without it, the camera will teleport into subspace
+					rot: new CameraSetInstructionRotation(
+						(float) $player->getLocation()->getPitch(), //pitch
+						(float) $player->getLocation()->getYaw() //yaw
+					),
+					facing_pos: $nearest->getLocation()->asVector3()->add(0, $nearest->getEyeHeight(), 0),
+				)
+			)->send($player);
+
+			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($player){
+				CameraInstruction::clear()->send($player);
+			}), 20 * 7);
+		}
+	}
+```
+
 ## Roadmap
 
 At the moment, there are a few improvements that can be/or are being worked on. Here is a list of some of those
