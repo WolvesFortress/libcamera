@@ -746,7 +746,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#out_circ-demo)
+https://github.com/user-attachments/assets/73c3bae0-1026-49be-855f-fdf53120bb55
 
 </details>
 
@@ -774,7 +774,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_out_circ-demo)
+https://github.com/user-attachments/assets/76626fef-d97a-4ed7-aa8a-d54a069c073c
 
 </details>
 
@@ -802,7 +802,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_cubic-demo)
+https://github.com/user-attachments/assets/1ec8c85b-2a92-4cf2-9f3c-6b4aa8b150db
 
 </details>
 
@@ -830,7 +830,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#out_cubic-demo)
+https://github.com/user-attachments/assets/02d67db4-d6c8-4062-b1f1-9b81f0e99012
 
 </details>
 
@@ -858,7 +858,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_out_cubic-demo)
+https://github.com/user-attachments/assets/002867af-8f93-4ca7-b34b-5ab0a9a17855
 
 </details>
 
