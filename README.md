@@ -343,11 +343,14 @@ Usage Example in Minecraft:
 When using minecraft:free with an ease parameter, you can move the free camera smoothly to a specified endpoint over a given duration.  
 The easing functions listed above determine how the camera moves.   
 Here, "in" means the start point and "out" means the end point.    
-  
-
 
 Reference:  
 https://bacchigames.club/mc/howtocamera.html
+
+> [!WARNING]
+> These demos may stimulate the vestibular system and cause symptoms such as **dizziness or a sensation of head movement (headshake)** that could last for several hours.    
+> Please proceed only if you are aware of the risks and feel well enough to continue.  
+
 
 | Easing Name    | Behavior Description                                           | See Demo                    | IsCrash |
 |----------------|----------------------------------------------------------------|-----------------------------|---------|
