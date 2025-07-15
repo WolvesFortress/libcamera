@@ -527,18 +527,18 @@ For convenience, we will use this common code for the demo.
 	<summary>see Code</summary>
 
 ```php
-	public function onUse(PlayerItemUseEvent $event) : void{
-		$player = $event->getPlayer();
-		if(!$player->isSneaking()){
-			return;
-		}
-		$this->onDemo($player, CameraSetInstructionEaseType::IN_BACK);
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
 	}
+	$this->onDemo($player, CameraSetInstructionEaseType::IN_BACK);
+}
 ```
 
 </details>
 
-<br>
+    
 
 <details align="center">
 	<summary>See demo</summary>
@@ -570,7 +570,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 
 
@@ -595,7 +595,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 
 
@@ -620,7 +620,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -649,7 +649,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -678,7 +678,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -707,7 +707,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -736,7 +736,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -765,7 +765,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -794,7 +794,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -823,7 +823,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -852,7 +852,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -881,7 +881,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -912,7 +912,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -941,7 +941,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -969,7 +969,7 @@ https://github.com/user-attachments/assets/cc72e54d-38fd-4921-89ea-48cc5c5d1f44
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -998,7 +998,7 @@ https://github.com/user-attachments/assets/a50bb0d6-770f-4910-be82-05abda073c61
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1027,7 +1027,7 @@ https://github.com/user-attachments/assets/f921aaa7-e170-4624-964f-b54c9a58b3c2
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1056,7 +1056,7 @@ https://github.com/user-attachments/assets/db433b41-6912-49e2-af7c-7f556d5b38f4
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1085,7 +1085,7 @@ https://github.com/user-attachments/assets/758fcb54-db91-4d83-baa6-b62c724a7ae3
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1114,7 +1114,7 @@ https://github.com/user-attachments/assets/e686b103-274c-4d98-ba18-feccfa563d97
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1143,7 +1143,7 @@ https://github.com/user-attachments/assets/c32a1034-eec0-4d2c-8a20-33bd03060d88
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1172,7 +1172,7 @@ https://github.com/user-attachments/assets/5ae64606-c404-4136-a78b-bee052ba0300
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1201,7 +1201,7 @@ https://github.com/user-attachments/assets/97958704-f087-4894-9888-360e9cf9e758
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1252,7 +1252,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1281,7 +1281,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1310,7 +1310,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
@@ -1383,7 +1383,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
-<br>
+    
 
 <details align="center">
 <summary>See demo</summary>
