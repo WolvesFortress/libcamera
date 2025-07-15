@@ -94,6 +94,13 @@ if($player instanceof Player && $player->isOnline()){
 
 - Fade
 
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/01bfc489-16bd-4424-aad0-32abb81d7517
+
+</details>
+
 ```php
 use muqsit\libcamera\libcamera;
 use muqsit\libcamera\CameraInstruction;
@@ -103,6 +110,13 @@ use pocketmine\player\Player;
 
 // ...
 if($player instanceof Player && $player->isOnline()){
+		$fadeInTime = 5;
+		$stayTime = 2;
+		$fadeOutTime = 2;
+		$r = 0;
+		$g = 0;
+		$b = 0;
+
 	/** 
 	 * @phpstan-param CameraFadeInstructionColor|null $color 
 	 * @phpstan-param CameraFadeInstructionTime|null $time
@@ -148,7 +162,7 @@ use pocketmine\math\Vector3;
 			return;
 		}
 
-        //Removes camera tracking. Note that target and free cameras are managed separately.
+		//Removes camera tracking. Note that target and free cameras are managed separately.
 		if(isset($this->set[$player->getName()])){
 			CameraInstruction::removeTarget()->send($player);
 			CameraInstruction::clear()->send($player);
@@ -156,7 +170,7 @@ use pocketmine\math\Vector3;
 			return;
 		}
 
-        //Find the most different zombie entities
+		//Find the most different zombie entities
 		$nearest = null;
 		$nearestDistance = PHP_INT_MAX;
 		foreach($player->getWorld()->getEntities() as $entity){
@@ -174,7 +188,7 @@ use pocketmine\math\Vector3;
 			return;
 		}
 
-        //
+		//
 		CameraInstruction::set(
 			preset: libcamera::getPresetRegistry()->registered["target"],
 			ease: new CameraSetInstructionEase(
@@ -189,13 +203,13 @@ use pocketmine\math\Vector3;
 			facing_pos: null
 		)->send($player);
 
-        //To use CameraInstruction::target you first need to make it a free camera.
+		//To use CameraInstruction::target you first need to make it a free camera.
 		CameraInstruction::target(
 			targetCenterOffset: Vector3::zero(), // no offset
 			actorUniqueId: $nearest->getId() // for example target the player
 		)->send($player);
 
-        //Manages which packets have been sent
+		//Manages which packets have been sent
 		$this->set[$player->getName()] = true;
 	}
 ```
