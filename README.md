@@ -570,16 +570,6 @@ public function onUse(PlayerItemUseEvent $event) : void{
 </details>
 
 <br>
-
-
-<!--details align="center">
-
-<summary>See demo</summary>
-
-[see](#out_back-demo)
-
-</details-->
-
 ---
 
 ## in_out_back-demo
@@ -602,13 +592,6 @@ public function onUse(PlayerItemUseEvent $event) : void{
 </details>
 
 <br>
-
-<!--details align="center">
-<summary>See demo</summary>
-
-[see](#in_out_back-demo)
-
-</details-->
 
 ---
 
@@ -914,7 +897,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#out_quart-demo)
+https://github.com/user-attachments/assets/77c0d077-da10-41c1-a010-3f4aa62a984e
 
 </details>
 
@@ -942,7 +925,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <details align="center">
 <summary>See demo</summary>
 
-[see](#in_out_quart-demo)
+https://github.com/user-attachments/assets/cc72e54d-38fd-4921-89ea-48cc5c5d1f44
 
 </details>
 
