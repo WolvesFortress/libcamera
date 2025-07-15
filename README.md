@@ -342,7 +342,10 @@ https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
 Usage Example in Minecraft:  
 When using minecraft:free with an ease parameter, you can move the free camera smoothly to a specified endpoint over a given duration.  
 The easing functions listed above determine how the camera moves.   
+Here, "in" means the start point and "out" means the end point.    
   
+
+
 Reference:  
 https://bacchigames.club/mc/howtocamera.html
 
