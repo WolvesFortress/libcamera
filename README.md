@@ -546,7 +546,7 @@ For convenience, we will use this common code for the demo.
 https://github.com/user-attachments/assets/67924c3f-f7c8-4216-b11f-943bf5149de9
 
 </details>
----
+
 
 
 ## out_back-demo
@@ -573,7 +573,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 <br>
 
 
----
+
 
 ## in_out_back-demo
 
@@ -600,7 +600,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 
 
----
+
 
 ## in_bounce-demo
 
@@ -629,7 +629,7 @@ https://github.com/user-attachments/assets/4f55e402-e27f-4e20-897a-3fd199561498
 
 </details>
 
----
+
 
 ## out_bounce-demo
 
@@ -658,7 +658,7 @@ https://github.com/user-attachments/assets/365555eb-6193-4121-ac71-b300b857edae
 
 </details>
 
----
+
 
 ## in_out_bounce-demo
 
@@ -687,7 +687,7 @@ https://github.com/user-attachments/assets/a4a8f132-d31f-4187-9769-b5ea544a5d56
 
 </details>
 
----
+
 
 ## in_circ-demo
 
@@ -716,7 +716,7 @@ https://github.com/user-attachments/assets/8edb854e-ad07-47d6-ab08-792954209ffe
 
 </details>
 
----
+
 
 ## out_circ-demo
 
@@ -745,7 +745,7 @@ https://github.com/user-attachments/assets/73c3bae0-1026-49be-855f-fdf53120bb55
 
 </details>
 
----
+
 
 ## in_out_circ-demo
 
@@ -774,7 +774,7 @@ https://github.com/user-attachments/assets/76626fef-d97a-4ed7-aa8a-d54a069c073c
 
 </details>
 
----
+
 
 ## in_cubic-demo
 
@@ -803,7 +803,7 @@ https://github.com/user-attachments/assets/1ec8c85b-2a92-4cf2-9f3c-6b4aa8b150db
 
 </details>
 
----
+
 
 ## out_cubic-demo
 
@@ -832,7 +832,7 @@ https://github.com/user-attachments/assets/02d67db4-d6c8-4062-b1f1-9b81f0e99012
 
 </details>
 
----
+
 
 ## in_out_cubic-demo
 
@@ -861,7 +861,7 @@ https://github.com/user-attachments/assets/002867af-8f93-4ca7-b34b-5ab0a9a17855
 
 </details>
 
----
+
 
 ## in_quart-demo
 
@@ -892,7 +892,7 @@ https://github.com/user-attachments/assets/01342b32-bd33-4bd3-a0e2-a332914fcd3d
 
 </details>
 
----
+
 
 ## out_quart-demo
 
@@ -921,7 +921,7 @@ https://github.com/user-attachments/assets/77c0d077-da10-41c1-a010-3f4aa62a984e
 
 </details>
 
----
+
 
 ## in_out_quart-demo
 
@@ -978,7 +978,7 @@ https://github.com/user-attachments/assets/a50bb0d6-770f-4910-be82-05abda073c61
 
 </details>
 
----
+
 
 ## out_quint-demo
 
@@ -1007,7 +1007,7 @@ https://github.com/user-attachments/assets/f921aaa7-e170-4624-964f-b54c9a58b3c2
 
 </details>
 
----
+
 
 ## in_out_quint-demo
 
@@ -1036,7 +1036,7 @@ https://github.com/user-attachments/assets/db433b41-6912-49e2-af7c-7f556d5b38f4
 
 </details>
 
----
+
 
 ## in_sine-demo
 
@@ -1065,7 +1065,7 @@ https://github.com/user-attachments/assets/758fcb54-db91-4d83-baa6-b62c724a7ae3
 
 </details>
 
----
+
 
 ## out_sine-demo
 
@@ -1094,7 +1094,7 @@ https://github.com/user-attachments/assets/e686b103-274c-4d98-ba18-feccfa563d97
 
 </details>
 
----
+
 
 ## in_out_sine-demo
 
@@ -1123,7 +1123,7 @@ https://github.com/user-attachments/assets/c32a1034-eec0-4d2c-8a20-33bd03060d88
 
 </details>
 
----
+
 
 ## in_expo-demo
 
@@ -1152,7 +1152,7 @@ https://github.com/user-attachments/assets/5ae64606-c404-4136-a78b-bee052ba0300
 
 </details>
 
----
+
 
 ## out_expo-demo
 
@@ -1181,7 +1181,7 @@ https://github.com/user-attachments/assets/97958704-f087-4894-9888-360e9cf9e758
 
 </details>
 
----
+
 
 ## in_out_expo-demo
 
@@ -1210,7 +1210,7 @@ https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 
 </details>
 
----
+
 
 ## spring-demo
 
@@ -1261,7 +1261,7 @@ https://github.com/user-attachments/assets/ccecf930-6c4e-46c8-b009-c88578d0668e
 
 </details>
 
----
+
 
 ## out_quad-demo
 
@@ -1290,7 +1290,7 @@ https://github.com/user-attachments/assets/21d17561-ebb5-44fa-a95e-c4382504f834
 
 </details>
 
----
+
 
 ## in_out_quad-demo
 
@@ -1319,7 +1319,7 @@ https://github.com/user-attachments/assets/76d050d3-6c5e-47f3-9ca8-5386e3e17f00
 
 </details>
 
----
+
 
 ## in_out_elastic-demo
 
@@ -1341,7 +1341,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
----
+
 
 ## out_elastic-demo
 
@@ -1363,7 +1363,7 @@ public function onUse(PlayerItemUseEvent $event) : void{
 
 </details>
 
----
+
 
 ## in_elastic-demo
 
