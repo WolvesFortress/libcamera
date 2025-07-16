@@ -33,7 +33,7 @@ final class libcamera{
 	public static array $network_ids;
 	private static ?CameraPresetsPacket $packetCache = null;
 
-	public static function newId() : int{
+	private static function newId() : int{
 		return self::$idCounter++;
 	}
 
