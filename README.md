@@ -85,8 +85,8 @@ if($player instanceof Player && $player->isOnline()){
 		),
 		camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
 		rot: new CameraSetInstructionRotation(
-			(float)$player->getLocation()->getPitch(), //pitch
-			(float)$player->getLocation()->getYaw() //yaw
+			(float)20, //pitch
+			(float)180 //yaw
 		),
 		facing_pos: null
 	)->send($player);
@@ -265,6 +265,122 @@ if($player instanceof Player && $player->isOnline()){
 }
 ```
 
+- registerCustom Preset
+
+First, build a custom preset registry
+CustomCameraPresetRegistry.php
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace daisukedaisuke\test;//please edit this
+
+use pocketmine\network\mcpe\protocol\types\camera\CameraPreset;
+use pocketmine\math\Vector2;
+use pocketmine\utils\RegistryTrait;
+
+/**
+ * @method static CameraPreset CUSTOM_THIRD_PERSON_FRONT()
+ */
+final class CustomCameraPresetRegistry{
+	use RegistryTrait;
+
+	final private function __construct(){
+		//none
+	}
+
+
+	/**
+	 * @internal Injecting this function will not send more presets!
+	 * @see libcamera::registerPreset()
+	 */
+	private static function register(string $name, CameraPreset $member) : void{
+		self::_registryRegister($name, $member);
+	}
+
+	/** @return array<string, CameraPreset> */
+	public static function getAll() : array{
+		return self::_registryGetAll();
+	}
+
+	protected static function setup() : void{
+		self::register("CUSTOM_THIRD_PERSON_FRONT", new CameraPreset(
+			name: "minecraft:test",
+			parent: "minecraft:third_person_front",
+			xPosition: null,
+			yPosition: null,
+			zPosition: null,
+			pitch: null,
+			yaw: null,
+			rotationSpeed: null,
+			snapToTarget: null,
+			horizontalRotationLimit: null,
+			verticalRotationLimit: null,
+			continueTargeting: null,
+			blockListeningRadius: null,
+			viewOffset: null,
+			entityOffset: null,
+			radius: null,
+			yawLimitMin: null,
+			yawLimitMax: null,
+			audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_CAMERA,
+			playerEffects: false,
+			aimAssist: null,
+			controlScheme: null
+		));
+	}
+}
+```
+
+Next, register the camera preset in the library.
+
+```php
+use muqsit\libcamera\libcamera;
+
+// ...
+
+libcamera::registerPreset(CustomCameraPresetRegistry::CUSTOM_FREE());
+```
+
+Third, use `CustomCameraPresetRegistry::CUSTOM_FREE()` directly.
+
+```php
+use muqsit\libcamera\libcamera;
+use muqsit\libcamera\CameraInstruction;
+use pocketmine\network\mcpe\protocol\types\camera\CameraPreset;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEase;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionEaseType;
+use pocketmine\network\mcpe\protocol\types\camera\CameraSetInstructionRotation;
+use pocketmine\network\mcpe\protocol\types\camera\Vector3;
+use pocketmine\player\Player;
+use muqsit\libcamera\CameraPresetRegistry;
+
+// ...
+if($player instanceof Player && $player->isOnline()){
+	/**
+	 * @phpstan-param CameraPreset $preset
+	 * @phpstan-param CameraSetInstructionEase|null $ease
+	 * @phpstan-param Vector3|null $camera_pos
+	 * @phpstan-param CameraSetInstructionRotation|null $rot
+	 * @phpstan-param Vector3|null $facing_pos
+	 */
+	CameraInstruction::set(
+		preset: CustomCameraPresetRegistry::CUSTOM_FREE(),
+		ease: new CameraSetInstructionEase(
+			CameraSetInstructionEaseType::IN_OUT_CUBIC,
+			(float) 5.0 // duration (sec)
+		),
+		camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+		rot: new CameraSetInstructionRotation(
+			(float)20.0, //pitch
+			(float)180.0 //yaw
+		),
+		facing_pos: null
+	)->send($player);
+}
+```
+
 # camera technic
 
 - use
@@ -280,61 +396,6 @@ use pocketmine\player\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\entity\Zombie;
 use muqsit\libcamera\CameraPresetRegistry;
-```
-
-## linear-demo
-
-Want to move the camera freely? Use ease!   
-
-<details align="center">
-	<summary>See demo</summary>
-
-https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
-
-</details>
-
-```php
-	public function onUse(PlayerItemUseEvent $event) : void{
-		$player = $event->getPlayer();
-		if(!$player->isSneaking()){
-			return;
-		}
-		if($player instanceof Player&&$player->isOnline()){
-			//linear
-
-			$do = $player->getDirectionVector()->multiply(10);
-
-			CameraInstruction::multi(
-				CameraInstruction::set(
-					preset: CameraPresetRegistry::FREE(),
-					ease: null,
-					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
-					rot: new CameraSetInstructionRotation(
-						(float) $player->getLocation()->getPitch(), //pitch
-						(float) $player->getLocation()->getYaw() //yaw
-					),
-					facing_pos: null
-				),
-				CameraInstruction::set(
-					preset: CameraPresetRegistry::FREE(),
-					ease:  new CameraSetInstructionEase(
-						CameraSetInstructionEaseType::LINEAR,
-						(float) 7.0 // duration (sec)
-					),
-					camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0)->addVector($do), //Without it, the camera will teleport into subspace
-					rot: new CameraSetInstructionRotation(
-						(float) $player->getLocation()->getPitch(), //pitch
-						(float) $player->getLocation()->getYaw() //yaw
-					),
-					facing_pos: null
-				)
-			)->send($player);
-
-			$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($player){
-				CameraInstruction::clear()->send($player);
-			}), 20 * 7);
-		}
-	}
 ```
  
 # Eases
@@ -1217,6 +1278,66 @@ https://github.com/user-attachments/assets/d2b91349-08b2-4273-91e2-f60d14d76423
 </details>
 
 
+## linear-demo
+
+Want to move the camera freely? Use ease!
+
+<details align="center">
+
+<summary>see Code</summary>
+
+```php
+public function onUse(PlayerItemUseEvent $event) : void{
+	$player = $event->getPlayer();
+	if(!$player->isSneaking()){
+		return;
+	}
+	if($player instanceof Player&&$player->isOnline()){
+		//linear
+
+		$do = $player->getDirectionVector()->multiply(10);
+
+		CameraInstruction::multi(
+			CameraInstruction::set(
+				preset: CameraPresetRegistry::FREE(),
+				ease: null,
+				camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
+				rot: new CameraSetInstructionRotation(
+					(float) $player->getLocation()->getPitch(), //pitch
+					(float) $player->getLocation()->getYaw() //yaw
+				),
+				facing_pos: null
+			),
+			CameraInstruction::set(
+				preset: CameraPresetRegistry::FREE(),
+				ease:  new CameraSetInstructionEase(
+					CameraSetInstructionEaseType::LINEAR,
+					(float) 7.0 // duration (sec)
+				),
+				camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0)->addVector($do), //Without it, the camera will teleport into subspace
+				rot: new CameraSetInstructionRotation(
+					(float) $player->getLocation()->getPitch(), //pitch
+					(float) $player->getLocation()->getYaw() //yaw
+				),
+				facing_pos: null
+			)
+		)->send($player);
+
+		$this->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($player){
+			CameraInstruction::clear()->send($player);
+		}), 20 * 7);
+	}
+}
+```
+
+</details>
+
+<details align="center">
+	<summary>See demo</summary>
+
+https://github.com/user-attachments/assets/d5ca8d67-1ac6-4d2c-8051-db3455317cd6
+
+</details>
 
 ## spring-demo
 
