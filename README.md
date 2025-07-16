@@ -188,7 +188,6 @@ use pocketmine\math\Vector3;
 			return;
 		}
 
-		//
 		CameraInstruction::set(
 			preset: libcamera::getPresetRegistry()->registered["target"],
 			ease: new CameraSetInstructionEase(
