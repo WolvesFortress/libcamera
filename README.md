@@ -340,10 +340,10 @@ use muqsit\libcamera\libcamera;
 
 // ...
 
-libcamera::registerPreset(CustomCameraPresetRegistry::CUSTOM_FREE());
+libcamera::registerPreset(CustomCameraPresetRegistry::CUSTOM_THIRD_PERSON_FRONT());
 ```
 
-Third, use `CustomCameraPresetRegistry::CUSTOM_FREE()` directly.
+Third, use `CustomCameraPresetRegistry::CUSTOM_THIRD_PERSON_FRONT()` directly.
 
 ```php
 use muqsit\libcamera\libcamera;
