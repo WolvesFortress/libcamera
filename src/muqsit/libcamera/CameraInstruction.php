@@ -37,6 +37,15 @@ final class CameraInstruction{
 		?Vector3 $facing_pos = null
 	) : self{
 		if(!libcamera::isRegistered()){
+			\GlobalLogger::get()->alert("WARNING: libcamera is not registered.");
+			\GlobalLogger::get()->alert("You must call libcamera::register(\$plugin) before using any camera instructions.");
+			\GlobalLogger::get()->alert("Example:");
+			\GlobalLogger::get()->alert("public function onEnable() : void{");
+			\GlobalLogger::get()->alert("    if(!AwaitForm::isRegistered()){ ");
+			\GlobalLogger::get()->alert("        AwaitForm::register(\$this);");
+			\GlobalLogger::get()->alert("     }");
+			\GlobalLogger::get()->alert("}");
+
 			throw new \RuntimeException("libcamera::register() must be called before using CameraInstruction::set()");
 		}
 		$preset_id = libcamera::$network_ids[spl_object_id($preset)][1] ?? throw new \InvalidArgumentException("Unknown camera preset, see libcamera::registerPreset()");
