@@ -84,8 +84,8 @@ if($player instanceof Player && $player->isOnline()){
 		),
 		camera_pos: $player->getPosition()->add(0.0, $player->getEyeHeight(), 0.0), //Without it, the camera will teleport into subspace
 		rot: new CameraSetInstructionRotation(
-			(float)$player->getLocation()->getPitch(), //pitch
-			(float)$player->getLocation()->getYaw() //yaw
+			(float)20.0, //pitch
+			(float)180.0 //yaw
 		),
 		facing_pos: null
 	)->send($player);
