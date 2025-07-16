@@ -37,7 +37,17 @@ final class CameraInstruction{
 		?Vector3 $facing_pos = null
 	) : self{
 		$preset_id = libcamera::getPresetRegistry()->network_ids[spl_object_id($preset)];
-		$instruction = new CameraSetInstruction($preset_id, $ease, $camera_pos, $rot, $facing_pos, null, null, null);
+		$instruction = new CameraSetInstruction(
+			preset: $preset_id,
+			ease: $ease,
+			cameraPosition: $camera_pos,
+			rotation: $rot,
+			facingPosition: $facing_pos,
+			viewOffset: null,
+			entityOffset: null,
+			default: null,
+			ignoreStartingValuesComponent: false
+		);
 		return new self([[$instruction, null, null, null]]);
 	}
 

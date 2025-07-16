@@ -32,11 +32,126 @@ final class libcamera{
 	public static function register(Plugin $plugin) : void{
 		!self::$registered || throw new BadMethodCallException("Tried to registered an already existing libcamera instance");
 		$preset_registry = new CameraPresetRegistry([
-			"free" => new CameraPreset("minecraft:free", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_CAMERA, false, false, null),
-			"first_person" => new CameraPreset("minecraft:first_person", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
-			"third_person" => new CameraPreset("minecraft:third_person", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
-			"third_person_front" => new CameraPreset("minecraft:third_person_front", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_PLAYER, false, false, null),
-			"target" => new CameraPreset("minecraft:target", "minecraft:free", null, null, null, null, null, 0.0, true, new Vector2(0.0, 360.0), new Vector2(0.0, 180.0), true, 50.0, null, null, null, CameraPreset::AUDIO_LISTENER_TYPE_CAMERA, false, false, null)
+			"free" => new CameraPreset(
+				name: "minecraft:free",
+				parent: "",
+				xPosition: null,
+				yPosition: null,
+				zPosition: null,
+				pitch: null,
+				yaw: null,
+				rotationSpeed: null,
+				snapToTarget: null,
+				horizontalRotationLimit: null,
+				verticalRotationLimit: null,
+				continueTargeting: null,
+				blockListeningRadius: null,
+				viewOffset: null,
+				entityOffset: null,
+				radius: null,
+				yawLimitMin: null,
+				yawLimitMax: null,
+				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_CAMERA,
+				playerEffects: false,
+				aimAssist: null,
+				controlScheme: null
+			),
+			"first_person" => new CameraPreset(
+				name: "minecraft:first_person",
+				parent: "",
+				xPosition: null,
+				yPosition: null,
+				zPosition: null,
+				pitch: null,
+				yaw: null,
+				rotationSpeed: null,
+				snapToTarget: null,
+				horizontalRotationLimit: null,
+				verticalRotationLimit: null,
+				continueTargeting: null,
+				blockListeningRadius: null,
+				viewOffset: null,
+				entityOffset: null,
+				radius: null,
+				yawLimitMin: null,
+				yawLimitMax: null,
+				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
+				playerEffects: false,
+				aimAssist: null,
+				controlScheme: null
+			),
+			"third_person" => new CameraPreset(
+				name: "minecraft:third_person",
+				parent: "",
+				xPosition: null,
+				yPosition: null,
+				zPosition: null,
+				pitch: null,
+				yaw: null,
+				rotationSpeed: null,
+				snapToTarget: null,
+				horizontalRotationLimit: null,
+				verticalRotationLimit: null,
+				continueTargeting: null,
+				blockListeningRadius: null,
+				viewOffset: null,
+				entityOffset: null,
+				radius: null,
+				yawLimitMin: null,
+				yawLimitMax: null,
+				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
+				playerEffects: false,
+				aimAssist: null,
+				controlScheme: null
+			),
+			"third_person_front" => new CameraPreset(
+				name: "minecraft:third_person_front",
+				parent: "",
+				xPosition: null,
+				yPosition: null,
+				zPosition: null,
+				pitch: null,
+				yaw: null,
+				rotationSpeed: null,
+				snapToTarget: null,
+				horizontalRotationLimit: null,
+				verticalRotationLimit: null,
+				continueTargeting: null,
+				blockListeningRadius: null,
+				viewOffset: null,
+				entityOffset: null,
+				radius: null,
+				yawLimitMin: null,
+				yawLimitMax: null,
+				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_PLAYER,
+				playerEffects: false,
+				aimAssist: null,
+				controlScheme: null
+			),
+			"target" => new CameraPreset(
+				name: "minecraft:target",
+				parent: "minecraft:free",
+				xPosition: null,
+				yPosition: null,
+				zPosition: null,
+				pitch: null,
+				yaw: null,
+				rotationSpeed: 0.0,
+				snapToTarget: true,
+				horizontalRotationLimit: new Vector2(0.0, 360.0),
+				verticalRotationLimit: new Vector2(0.0, 180.0),
+				continueTargeting: true,
+				blockListeningRadius: 50.0,
+				viewOffset: null,
+				entityOffset: null,
+				radius: null,
+				yawLimitMin: null,
+				yawLimitMax: null,
+				audioListenerType: CameraPreset::AUDIO_LISTENER_TYPE_CAMERA,
+				playerEffects: false,
+				aimAssist: null,
+				controlScheme: null
+			)
 		]);
 		$packet = CameraPresetsPacket::create(array_values($preset_registry->registered));
 		Server::getInstance()->getPluginManager()->registerEvent(DataPacketReceiveEvent::class, function(DataPacketReceiveEvent $event) use($packet) : void{
@@ -48,9 +163,7 @@ final class libcamera{
 			foreach($event->getPackets() as $packet){
 				if($packet instanceof StartGamePacket){
 					$experiments = $packet->levelSettings->experiments->getExperiments();
-					$experiments["focus_target_camera"] = true;
-					$experiments["third_person_cameras"] = true;
-					$experiments["cameras"] = true;
+					$experiments["experimental_creator_camera"] = true;//It seems to work without it.
 					$packet->levelSettings->experiments = new Experiments($experiments, true);
 				}
 			}
