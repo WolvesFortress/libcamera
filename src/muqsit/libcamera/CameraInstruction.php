@@ -37,16 +37,16 @@ final class CameraInstruction{
 		?Vector3 $facing_pos = null
 	) : self{
 		if(!libcamera::isRegistered()){
-			$looger = \GlobalLogger::get();
-			$looger = new \PrefixedLogger($looger, "libcamera");
-			$looger->info("WARNING: libcamera is not registered.");
-			$looger->info("You must call libcamera::register(\$plugin) before using any camera instructions.");
-			$looger->info("Example:");
-			$looger->info("public function onEnable() : void{");
-			$looger->info("    if(!AwaitForm::isRegistered()){ ");
-			$looger->info("        AwaitForm::register(\$this);");
-			$looger->info("     }");
-			$looger->info("}");
+			$logger = \GlobalLogger::get();
+			$logger = new \PrefixedLogger($logger, "libcamera");
+			$logger->info("WARNING: libcamera is not registered.");
+			$logger->info("You must call libcamera::register(\$plugin) before using any camera instructions.");
+			$logger->info("Example:");
+			$logger->info("public function onEnable() : void{");
+			$logger->info("    if(!AwaitForm::isRegistered()){ ");
+			$logger->info("        AwaitForm::register(\$this);");
+			$logger->info("     }");
+			$logger->info("}");
 
 			throw new \RuntimeException("libcamera::register() must be called before using CameraInstruction::set()");
 		}
