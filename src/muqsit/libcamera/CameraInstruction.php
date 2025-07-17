@@ -36,8 +36,32 @@ final class CameraInstruction{
 		?CameraSetInstructionRotation $rot = null,
 		?Vector3 $facing_pos = null
 	) : self{
-		$preset_id = libcamera::getPresetRegistry()->network_ids[spl_object_id($preset)];
-		$instruction = new CameraSetInstruction($preset_id, $ease, $camera_pos, $rot, $facing_pos, null, null, null);
+		if(!libcamera::isRegistered()){
+			$logger = \GlobalLogger::get();
+			$logger = new \PrefixedLogger($logger, "libcamera");
+			$logger->info("WARNING: libcamera is not registered.");
+			$logger->info("You must call libcamera::register(\$plugin) before using any camera instructions.");
+			$logger->info("Example:");
+			$logger->info("public function onEnable() : void{");
+			$logger->info("    if(!AwaitForm::isRegistered()){ ");
+			$logger->info("        AwaitForm::register(\$this);");
+			$logger->info("     }");
+			$logger->info("}");
+
+			throw new \RuntimeException("libcamera::register() must be called before using CameraInstruction::set()");
+		}
+		$preset_id = libcamera::$network_ids[spl_object_id($preset)][1] ?? throw new \InvalidArgumentException("Unknown camera preset, see libcamera::registerPreset()");
+		$instruction = new CameraSetInstruction(
+			preset: $preset_id,
+			ease: $ease,
+			cameraPosition: $camera_pos,
+			rotation: $rot,
+			facingPosition: $facing_pos,
+			viewOffset: null,
+			entityOffset: null,
+			default: null,
+			ignoreStartingValuesComponent: false
+		);
 		return new self([[$instruction, null, null, null]]);
 	}
 
